@@ -1,102 +1,215 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: rgb(223, 197, 142)">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
-    <style>.navbar {
-            overflow: hidden;
-            background-color: rgb(255, 0, 0);
-            position: fixed;
-            top: 0;
-            width: 100%;
-          }
-          
-          .navbar a {
-            float: left;
-            display: block;
-            color: #801c1c;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-          }
-          
-          .navbar div:hover {
-            background: #ddd;
-            color: black;
-          }
-          
-          .main {
-            padding: 16px;
-            margin-top: 30px;
-            height: 1500px; 
-          }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+  <style>
+    .navbar {
+      overflow: hidden;
+      background-color: rgb(148, 0, 0);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      text-align: center;
+      align-content: center;
+      color: aquamarine;
 
-          .cups {
-            text-align: center;
-            margin-top: 100px;
-            
-          }
-          </style>
-          
-          
-          <title>GameTime Bitches</title>
+    }
 
-    <!-- Include links to CSS stylesheets below -->
-    <!-- TODO (optional): Add link to bulma here -->
+    .navbar a {
+      float: left;
+      display: block;
+      color: #801c1c;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar div:hover {
+      background: #ddd;
+      color: black;
+    }
+
+    #main {
+      padding: 16px;
+      margin-top: 30px;
+      height: 1500px;
+    }
+
+    .cups {
+      text-align: center;
+      margin-top: 150px;
+
+    }
+
+    .score2 {
+      margin-top:100px;
+      text-align: center;
+      color: black;
+
+
+    }
+
+    .score1 {
+      margin-top:100px;
+      text-align: center;
+      color: black;
+
+    }
+
+
+    .column2 {
+      float: right;
+      width: 50%;
+    }
+
+    .pongname {
+      font-size: 22px;
+      text-decoration: underline;
+
+    }
+
+
+    /* Clear floats after the columns */
+  </style>
+
+
+  <title>GameTime Bitches</title>
+
+  <!-- Include links to CSS stylesheets below -->
+  <!-- TODO (optional): Add link to bulma here -->
 </head>
 
-<body>
-    <div class="navbar">
-        <div id = "players">Player Select
-        <button id="p1" class = "button3">Player 1</button><button id="p2" class = "button3">Player 2</button>
-        <button id="p3" class = "button3">Player 3</button><button id="p4" class = "button3">Player 4</button>
-        </div>
-        <div id = "shots">Shot Type
-        <button id="hit"class = "button3">Hit</button><button id="miss" class = "button3">Miss</button>
-    </div> 
-    <button id="check">check status</button>
+<body style="background-color: rgb(223, 197, 142)">
+  <div class="navbar">
+    <div id="players">Player Select
+      <button id="p1" class="button3">Player 1</button>
+      <button id="p2" class="button3">Player 2</button>
+      <button id="p3" class="button3">Player 3</button>
+      <button id="p4" class="button3">Player 4</button>
     </div>
-      <div class="main">
-      <div id = "teamone" class = "cups">
-        Team 1
-        <form>
-        <div class= "title">
-        |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "1"/> |
-        </div>
-        <div class= "title">
-        | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "2"/> |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "3"/> | </div>
-        <div class= "title">
-        |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "4"/> |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "5"/>| <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "6"/>|</div>
-        <div class= "title">
-        | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "7"/> | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "8"/> | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "9"/> | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "10"/> |</div>
-        </form>
-        </div>
-        
-        <div id = "teamtwo" class = "cups">
-            Team 2
-            <form>
-                <div class= "title">
-                |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "1"/> |
-                </div>
-                <div class= "title">
-                | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "2"/> |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "3"/> | </div>
-                <div class= "title">
-                |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "4"/> |<img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "5"/>| <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "6"/>|</div>
-                <div class= "title">
-                | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "7"/> | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "8"/> | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "9"/> | <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" id = "10"/> |</div>
-                </form>
-        </div></div>
+    <div id="shots">Shot Type
+      <button id="hit" class="button3">Hit</button>
+      <button id="miss" class="button3">Miss</button>
 
-        
-        <script>
-            function imgWindow() {
-            alert(event.target.id); }
-           </script>   
-    <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="render.js" type="module"></script>
+    </div>
+    <button id="check">check status</button>
+  </div>
+
+
+  <div class="columns">
+    <div class="column">
+        <div id="t1s" class="score1">
+          <div id="rem1">Teamone cups remaining = 10</div>
+          <br>
+          <div class="pongname">Player 1
+            <br>
+          </div>
+          <div id="p1sc">
+          Shots: 0
+          <br> Hits: 0
+          <br> Misses: 0
+          <br>
+  </div>
+          <div class="pongname">Player 2
+            <br>
+          </div>
+          
+          <div id="p2sc">
+              Shots: 0
+              <br> Hits: 0
+              <br> Misses: 0
+              <br>
+        </div>
+        </div></div>
+        <div class="column">
+        <div id="teamone" class="cups">
+        <div style = "color:black;font-size:30px;">Team 1</div>
+        <form id="t1">
+          <div class="title">|
+            <img src="SoloCup-512.png" width="60" height="38" class="cup" id="1" /> |
+          </div>
+          <div class="title">
+            |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="2" /> |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="3" /> | </div>
+          <div class="title">
+            |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="4" /> |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="5" />|
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="6" />|</div>
+          <div class="title">
+            |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="7" /> |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="8" /> |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="9" /> |
+            <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="10" /> |</div>
+        </form>
+      </div>
+      </div>
+    
+    <div class = "column">
+    <div id="teamtwo" class="cups">
+      <div style = "color:black;font-size:30px;">Team 2</div>
+      <form id=t2>
+          
+        <div class="title">|
+          <img src="SoloCup-512.png" width="60" height="38" class="cup" id="11" /> |
+        </div>
+        <div class="title">
+          |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="12" /> |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="13" /> | </div>
+        <div class="title">
+          |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="14" /> |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="15" />|
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="16" />|</div>
+        <div class="title">
+          |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="17" /> |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="18" /> |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="19" /> |
+          <img src="SoloCup-512.png" width="60" height="38" onclick="imgWindow();" class="cup" id="20" /> |</div>
+      </form>
+    </div>
+  </div>    
+  <div class="column">
+      <div id="t2s" class="score2">
+        <div id = "rem2">Teamtwo cups remaining = 10</div>
+        <br>
+        <div class="pongname">Player 3
+          <br>
+        </div>
+        <div id="p3sc">
+            Shots: 0
+            <br> Hits: 0
+            <br> Misses: 0
+            <br>
+      </div>
+
+        <div class="pongname">Player 4
+          <br>
+        </div>
+        <div id="p4sc">
+            Shots: 0
+            <br> Hits: 0
+            <br> Misses: 0
+            <br>
+      </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="render.js" type="module"></script>
 </body>
 
 </html>
