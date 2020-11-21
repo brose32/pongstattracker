@@ -7,7 +7,7 @@ const require = createRequire(import.meta.url);
 const express = require('express');
 
 const app = express();
-
+const axios = require('axios');
 const expressSession = require('express-session');
 const firebase = require('firebase');
 
@@ -41,14 +41,20 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
 var database = firebase.database();
-function createNewUser(userId, username, name) {
-  firebase.database().ref('profiles/' + userId).set({
+
+
+export function createNewUser(username, password, name) {
+  //need to add if username is taken
+  firebase.database().ref('profiles/' + username).set({
     username: username,
+    password: password,
     name: name,
     cupsmade : 0,
-    shots: 0
+    shots: 0,
+    finalCupsMade: 0
   });
 }
+//createNewUser("anotheruse", "password2", "billy joe");
 
 //createNewUser(4, "urmom", "bill");
 
@@ -56,63 +62,46 @@ function createNewUser(userId, username, name) {
 
 function getAllProfilesData() {
   var ref = firebase.database().ref();
-  ref.on("value", function(snapshot) {
+  ref.on("values", function(snapshot) {
     let x = JSON.stringify(snapshot.val());
     console.log(x);
-    
-    
  }, function (error) {
     console.log("Error: " + error.code);
  });
  
 }
 
-
 app.get('/', (req, res) => {
     res.send(createStuff());
   });
 
-
-app.get('/api/profiles', (req, res) => {
+//when user gets profile page gets the player profile stats from the database and loads profile page for that player
+app.get('/profiles/:username', (req, res) => {
   //let stuff = getAllProfilesData();
-  var ref = firebase.database().ref();
+  var ref = firebase.database().ref('/profiles/' + req.params.username);
   ref.on("value", function(snapshot) {
-    //let x = JSON.stringify(snapshot.val());
     let x = snapshot.val();
-    console.log(x);
-    res.send(`database: ${JSON.stringify(x)}`);
+    //console.log(x);
+    //need to add function that creates the player profile webpage and replace below
+    res.send(`username: ${x.username} player real name: ${x.name} <br>
+    cups made: ${x.cupsmade}`);
  }, function (error) {
     console.log("Error: " + error.code);
  });
   
 });
-//getting a players profile stats
-app.get('/api/profiles/:userID', (req, res) => {
-   // console.log(req.params.userID);
-    let player = profiles.find(p => p.userID === req.params.userID);
-    if (player == undefined) {
-        res.status(404).send("Bad request this username does not exist");
-    } else {
-        console.log('player found');
-        //loadProfile();
-        res.send(`Username: ${player.userID} <br>
-        Name: ${player.name}
-        Career Cups Made: ${player.cupsmade}`);
-    }
-    
-});
   
 //example post function to add a new profile
-app.post('/api/profiles', (req, res) =>{
-  const player = {
-    userID: req.body.userID,
-    name: req.body.name,
-    cupsmade: req.body.cupsmade
-  };
-  profiles.push(player);
-  res.send(player);
-});
-  
+//app.post('/api/profiles', (req, res) =>{
+//  const player = {
+//    userID: req.body.userID,
+//    name: req.body.name,
+//    cupsmade: req.body.cupsmade
+//  };
+//  profiles.push(player);
+//  res.send(player);
+//});
+
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
   });
