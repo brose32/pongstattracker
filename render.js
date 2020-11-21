@@ -1,6 +1,11 @@
 let player = "";
 let shottype = "";
-const renderboard = function () {
+
+export function createStuff() {
+    return `<div><strong>hello</strong></div>`;
+}
+
+export function renderboard() {
     // TODO: Return these elements as a string, HTMLElement, or jQuery object
     // Example: return `<div>${hero.name}</div>`;
     $("#teamone").append( `
@@ -33,7 +38,7 @@ const renderboard = function () {
         </form>
         </div>
     `);
-    window.location.href = "C:\Users\fusik\pongstattracker\indexex.html";
+   // window.location.href = "C:\Users\fusik\pongstattracker\indexex.html";
     
 }
 
@@ -46,6 +51,10 @@ function updateplayer(){
 function updateshot(){
     
    shottype = this.id;
+}
+
+function loadProfile() {
+    alert("yooooooooo");
 }
 
 function check(){
@@ -73,7 +82,4 @@ $(".navbar").on("click", "#check", chode, check);
       
 }
 
-$(function(){
-    rungame();
-    
-})
+

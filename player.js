@@ -1,8 +1,13 @@
 class Player {
-    constructor(name) {
+    constructor(name, cupmade, shots) {
         this.name = name;
-        this.cupmade = 0;
-        this.shots = 0;
+        this.cupmade = cupmade;
+        this.shots = shots;
         
+    }
+
+    madeShot() {
+        this.cupmade++;
+        this.shots++;
     }
 }
