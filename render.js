@@ -169,11 +169,14 @@ function updatestat(){
 function cupdate() {
    if(shottype != "miss"){
     $("#"+event.target.id).replaceWith('  -                 -            ');    
-    if(event.target.id > 10){
-        teamtwoscore++;
-    } else {
+    if(event.target.id == "final1" || event.target.id < 10){
         teamonescore++;
     }
+    if(event.target.id == "final2" || event.target.id > 10){
+        teamtwoscore++;
+    }
+    
+    
     updatestat();
     updatescore(event.target.id);
 } else {
@@ -181,6 +184,14 @@ function cupdate() {
 }
 }
 function updatescore(cupnum){
+    if(cupnum == "final1"){
+        let val = 10 - teamonescore;
+        $("#rem1").replaceWith(`<div id ="rem1">Teamone cups remaining = ${val}</div>`);
+    
+    } if(cupnum == "final2"){
+        let val = 10 - teamtwoscore;
+        $("#rem2").replaceWith(`<div id ="rem2">Teamtwo cups remaining = ${val}</div>`);
+    }
     if(cupnum > 10){
         let val = 10 - teamtwoscore;
         $("#rem2").replaceWith(`<div id ="rem2">Teamtwo cups remaining = ${val}</div>`);
@@ -189,6 +200,9 @@ function updatescore(cupnum){
         let val = 10 - teamonescore;
         $("#rem1").replaceWith(`<div id ="rem1">Teamone cups remaining = ${val}</div>`);
     }
+
+    
+   
     if(teamonescore == 4){
         $("#t1").replaceWith(`
         <form id=t1>
@@ -213,11 +227,14 @@ function updatescore(cupnum){
     }
     if(teamonescore == 9){
         $("#t1").replaceWith(`
-        <form id ="t1">
-        <div class= "title">|<img src="SoloCup-512.png" width="60" height="38" class = "cup" id = "1"/> |
+        
+        <form id=t1>
+        <div class= "title">|<img src="SoloCup-512.png" width="60" height="38" class = "cup" id = "final1"/> |
         </div>
         </form>
         </div>`);
+        alert(teamonescore);
+        alert(teamtwoscore);
     }
     if(teamtwoscore == 4){
         $("#t2").replaceWith(`
@@ -247,28 +264,30 @@ function updatescore(cupnum){
         $("#t2").replaceWith(`
         
         <form id=t2>
-        <div class= "title">|<img src="SoloCup-512.png" width="60" height="38" class = "cup" id = "11"/> |
+        <div class= "title">|<img src="SoloCup-512.png" width="60" height="38" class = "cup" id = "final2"/> |
         </div>
         </form>
         </div>`);
     }
     if(teamtwoscore == 10){
-        $("#t1").replaceWith(`
+        $("#t1").append(`
         
         
         <div class= "title">YOU FUCKING DID IT YOU BEAUTIFUL BASTARD
         </div>
        
         </div>`);
+        alert(teamtwoscore);
     }
     if(teamonescore == 10){
-        $("#t2").replaceWith(`
+        $("#t2").append(`
         
         
         <div class= "title">YOU FUCKING DID IT YOU BEAUTIFUL BASTARD
         </div>
        
         </div>`);
+        alert(teamonescore);
     }
 }
 
