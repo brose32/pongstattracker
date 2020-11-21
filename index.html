@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style = "background-color:rgb(255, 205, 113)">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+    <style>
     
+    .mainpage{
+        text-align: center;
+        font-size: 69px;
+        margin-top: 60px;
+        background-color: maroon;
+        color: rgb(252, 214, 143);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+    
+    
+    </style>
     <title>Pong Stat Tracker</title>
 
 </head>
 <body>
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="render.js" type = "module"></script>
-    
+    <div class = "mainpage">
     <h1>Pong Stat Tracker App</h1>
     <a href="indexex.html"><button id ="play">Play Now</button></a>
     <a href="login.html"><button>Login</button></a>
@@ -23,6 +35,7 @@
     <div id = "teamtwo"> Team 2
         <input id = "name12"></input>
         <input id = "name22"></input></div>
+    </div>
 </body>
 
 

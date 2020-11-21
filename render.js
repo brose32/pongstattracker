@@ -64,13 +64,13 @@ const renderboard = function () {
 function updateplayer(){
     
     player = this.id;
-    alert(player);
+    
 }
 
 function updateshot(){
     
    shottype = this.id;
-   alert(shottype);
+   
 }
 
 function check(){
@@ -233,8 +233,7 @@ function updatescore(cupnum){
         </div>
         </form>
         </div>`);
-        alert(teamonescore);
-        alert(teamtwoscore);
+        
     }
     if(teamtwoscore == 4){
         $("#t2").replaceWith(`
@@ -273,21 +272,21 @@ function updatescore(cupnum){
         $("#t1").append(`
         
         
-        <div class= "title">YOU FUCKING DID IT YOU BEAUTIFUL BASTARD
+        <div class= "title">YOU WON
         </div>
        
         </div>`);
-        alert(teamtwoscore);
+    
     }
     if(teamonescore == 10){
         $("#t2").append(`
         
         
-        <div class= "title">YOU FUCKING DID IT YOU BEAUTIFUL BASTARD
+        <div class= "title">YOU WON
         </div>
        
         </div>`);
-        alert(teamonescore);
+        
     }
 }
 
