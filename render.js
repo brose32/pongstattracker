@@ -1,9 +1,11 @@
-let player = "p1";
-let shottype = "miss";
-let player1 = "";
-let player2 = "";
-let player3 = "";
-let player4 = "";
+
+let shottype = "hit";
+let pp= "";
+let player1 = localStorage["p1"];
+let player2 = localStorage["p2"];
+let player3 = localStorage["p3"];
+let player = player1;
+let player4 = localStorage["p4"];
 let teamtwoscore = 0;
 let teamonescore = 0;
 let p1shot = 0;
@@ -61,16 +63,19 @@ const renderboard = function () {
     
 }
 
+
 function updateplayer(){
     
     player = this.id;
+    pp= localStorage[player];
+    $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}`);
     
 }
 
 function updateshot(){
     
    shottype = this.id;
-   
+   $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}`);
 }
 
 function check(){
@@ -291,15 +296,27 @@ function updatescore(cupnum){
 }
 
 const rungame = function(){
-let player = "";
-let shottype= "";
-player = $("#players").on("click", ".button3", updateplayer);
-shottype = $("#shots").on("click", ".button3", updateshot);
-let chode = 0;
-let group = {
-    pl: player,
-    st: shottype
-}
+$(".navbar").append(`<div id="select">Curent Player: ${player}   Current Shot Type: ${shottype}</div>`)
+$("#players").replaceWith(`<div id="players">Player Select
+<button id="p1" class="button3">${player1}</button>
+<button id="p2" class="button3">${player2}</button>
+<button id="p3" class="button3">${player3}</button>
+<button id="p4" class="button3">${player4}</button>
+</div>`);
+$("#name1er").replaceWith(`<div class="pongname" id="name1er">${player1}
+<br>
+</div>`);
+$("#name2er").replaceWith(`<div class="pongname" id="name2er">${player2}
+<br>
+</div>`);
+$("#name3er").replaceWith(`<div class="pongname" id="name3er">${player3}
+<br>
+</div>`);
+$("#name4er").replaceWith(`<div class="pongname" id="name4er">${player4}
+<br>
+</div>`);
+$("#players").on("click", ".button3", updateplayer);
+$("#shots").on("click", ".button3", updateshot);
 $("#teamone").on("click", ".cup", cupdate);
 $("#teamtwo").on("click", ".cup", cupdate);
 

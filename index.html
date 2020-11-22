@@ -36,6 +36,19 @@
         <input id = "name12"></input>
         <input id = "name22"></input></div>
     </div>
+
+    <script>
+            function saveplayers(){
+            localStorage["p1"] = $("#name1").val();
+            localStorage["p2"] = $("#name2").val();
+            localStorage["p3"] = $("#name12").val();
+            localStorage["p4"] = $("#name22").val();
+            alert("fucker");
+            alert(localStorage["p4"]);
+            }
+            $(".mainpage").on("click", "#play", saveplayers);
+
+        </script>
 </body>
 
 
