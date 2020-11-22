@@ -1,6 +1,6 @@
 
 
-//import { createStuff, renderboard } from "./render.js";
+//import { renderboard } from "./render.js";
 import 'express';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
@@ -43,6 +43,7 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 
 
+
 export function createNewUser(username, password, name) {
   //need to add if username is taken
   firebase.database().ref('profiles/' + username).set({
@@ -54,11 +55,33 @@ export function createNewUser(username, password, name) {
     finalCupsMade: 0
   });
 }
-//createNewUser("anotheruse", "password2", "billy joe");
+//createNewUser("testuser", "password", "billy joe");
 
 //createNewUser(4, "urmom", "bill");
 
+export function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
+  
+  var ref = firebase.database().ref('/profiles/' + username);
+  var previous = ref.once("value").then((snapshot) => {
+    let x = snapshot.val();
+    postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shots, x);
+  });
+  
+}
 
+export function postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shotsGame, previous) {
+  const careerCupsMade = cupsMadeGame + previous.cupsmade;
+  const careerFinalCupsMade = finalCupsMadeGame + previous.finalCupsMade;
+  const careerShots = shotsGame + previous.shots;
+  firebase.database().ref('/profiles/' + username).set({
+    name: previous.name,
+    username: previous.username,
+    password: previous.password,
+    cupsmade : careerCupsMade,
+    finalCupsMade : careerFinalCupsMade,
+    shots: careerShots
+  });
+}
 
 function getAllProfilesData() {
   var ref = firebase.database().ref();
@@ -72,7 +95,8 @@ function getAllProfilesData() {
 }
 
 app.get('/', (req, res) => {
-    res.send(createStuff());
+    //res.send(createStuff());
+    res.send("hello");
   });
 
 //when user gets profile page gets the player profile stats from the database and loads profile page for that player
@@ -102,9 +126,15 @@ app.get('/profiles/:username', (req, res) => {
 //  res.send(player);
 //});
 
+
+
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
   });
+
+
+
+
 
 
 
