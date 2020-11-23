@@ -1,14 +1,14 @@
-//import { updateStats } from "./backend.js";
-
+//var backend = require('./backend');
+//var firebase = require('firebase');
 
 
 let shottype = "hit";
 let pp= "";
-let player1 = localStorage["p1"];
-let player2 = localStorage["p2"];
-let player3 = localStorage["p3"];
+let player1 = "abc";
+let player2 = "banaa";
+let player3 = "fffff";
 let player = player1;
-let player4 = localStorage["p4"];
+let player4 = "fafdfsdfsdaf";
 let teamtwoscore = 0;
 let teamonescore = 0;
 let p1shot = 0;
@@ -26,7 +26,43 @@ let p3miss = 0;
 let p4shot = 0;
 let p4hit = 0;
 let p4miss = 0;
+/*
+const firebaseConfig = {
+    apiKey: "AIzaSyBHyOIcIBbAAJ4CUgRMjNo4lck9FIIiY54",
+    authDomain: "pongstattracker.firebaseapp.com",
+    databaseURL: "https://pongstattracker.firebaseio.com",
+    projectId: "pongstattracker",
+    storageBucket: "pongstattracker.appspot.com",
+    messagingSenderId: "874355232113",
+    appId: "1:874355232113:web:f4c6802954a7193f9b7ad0",
+    measurementId: "G-6H8RS5YSKE"
+  };
+  firebase.initializeApp(firebaseConfig);
+  // Get a reference to the database service
+  var database = firebase.database();
 
+function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
+    var ref = firebase.database().ref('/profiles/' + username);
+    var previous = ref.once("value").then((snapshot) => {
+      let x = snapshot.val();
+      postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shots, x);
+    });
+  }
+function postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shotsGame, previous) {
+    const careerCupsMade = cupsMadeGame + previous.cupsmade;
+    const careerFinalCupsMade = finalCupsMadeGame + previous.finalCupsMade;
+    const careerShots = shotsGame + previous.shots;
+    const careerGamesPlayed = previous.gamesPlayed + 1;
+    firebase.database().ref('/profiles/' + username).set({
+      name: previous.name,
+      username: previous.username,
+      password: previous.password,
+      cupsmade : careerCupsMade,
+      finalCupsMade : careerFinalCupsMade,
+      shots: careerShots,
+      gamesPlayed: careerGamesPlayed
+    });
+  }*/
 
 
 const renderboard = function () {
@@ -70,7 +106,8 @@ const renderboard = function () {
 function updateplayer(){
     
     player = this.id;
-    pp= localStorage[player];
+    //pp= localStorage[player];
+    pp="banakk";
     $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}`);
     
 }
@@ -327,9 +364,12 @@ $("#teamtwo").on("click", ".cup", cupdate);
 
       
 }
+//updateStats("testuser", 100, 1, 250);
 
+//console.log("statsupdated");
 $(function(){
     rungame();
+    //updateStats("testuser", 5, 1, 12);
     
     
-})
+});

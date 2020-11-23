@@ -1,10 +1,10 @@
-<<<<<<< HEAD
+
 {
   "name": "pongstattracker",
   "version": "1.0.0",
   "description": "COMP 426 Final Project\r Ben Rosenberger Brendan Fusik Michael Tyndall Ritwik Pavan\r This application tracks the stats of each player during a pong game.",
   "main": "index.html",
-  "type": "module",
+  
   "dependencies": {
     "axios": "^0.21.0",
     "browser-sync": "^2.26.13",
@@ -32,38 +32,5 @@
   },
   "homepage": "https://github.com/brose32/pongstattracker#readme"
 }
-=======
-{
-  "name": "pongstattracker",
-  "version": "1.0.0",
-  "description": "COMP 426 Final Project\r Ben Rosenberger Brendan Fusik Michael Tyndall Ritwik Pavan\r This application tracks the stats of each player during a pong game.",
-  "main": "index.html",
-  "type": "module",
-  "dependencies": {
-    "axios": "^0.21.0",
-    "browser-sync": "^2.26.13",
-    "bulma": "^0.9.1",
-    "data-store": "^4.0.3",
-    "express": "^4.17.1",
-    "express-bulma": "^1.0.1",
-    "express-session": "^1.17.1",
-    "firebase": "^8.1.0",
-    "jquery": "^3.5.1",
-    "pug": "^3.0.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/brose32/pongstattracker.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/brose32/pongstattracker/issues"
-  },
-  "homepage": "https://github.com/brose32/pongstattracker#readme"
-}
->>>>>>> 627704a468f0ad2d5bab5291fd3aa05c1926067c
+
+
