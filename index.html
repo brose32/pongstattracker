@@ -1,24 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style = "background-color:rgb(255, 205, 113)">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+    <style>
     
+    .mainpage{
+        text-align: center;
+        font-size: 69px;
+        margin-top: 60px;
+        background-color: maroon;
+        color: rgb(252, 214, 143);
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    }
+    
+    
+    </style>
     <title>Pong Stat Tracker</title>
 
 </head>
 <body>
     <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/axios/dist/axios.js"></script>
-    <script src="render.js" type="module"></script>
-    <script src="backend.js" type="module"></script>
-    
+    <script src="render.js" type = "module"></script>
+    <div class = "mainpage">
     <h1>Pong Stat Tracker App</h1>
-    <a href="gamescreen.html"><button>Play Now</button></a>
+    <a href="indexex.html"><button id ="play">Play Now</button></a>
     <a href="login.html"><button>Login</button></a>
-    <div id = "teamone"></div>
-    <div id = "teamtwo"></div>
+    <div id = "teamone">Team 1
+        <input id = "name1"></input>
+        <input id = "name2"></input>
+
+    </div>
+    <div id = "teamtwo"> Team 2
+        <input id = "name12"></input>
+        <input id = "name22"></input></div>
+    </div>
+
+    <script>
+            function saveplayers(){
+            localStorage["p1"] = $("#name1").val();
+            localStorage["p2"] = $("#name2").val();
+            localStorage["p3"] = $("#name12").val();
+            localStorage["p4"] = $("#name22").val();
+            alert("fucker");
+            alert(localStorage["p4"]);
+            }
+            $(".mainpage").on("click", "#play", saveplayers);
+
+        </script>
 </body>
 
 
