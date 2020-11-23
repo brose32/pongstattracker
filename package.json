@@ -5,13 +5,16 @@
   "main": "index.html",
   "type": "module",
   "dependencies": {
+    "axios": "^0.21.0",
     "browser-sync": "^2.26.13",
     "bulma": "^0.9.1",
     "data-store": "^4.0.3",
     "express": "^4.17.1",
+    "express-bulma": "^1.0.1",
     "express-session": "^1.17.1",
     "firebase": "^8.1.0",
-    "jquery": "^3.5.1"
+    "jquery": "^3.5.1",
+    "pug": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
