@@ -2,17 +2,27 @@
 
 //import { renderboard } from "./render.js";
 import 'express';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 627704a468f0ad2d5bab5291fd3aa05c1926067c
 import { createRequire } from 'module';
 //import 'bulma/css/bulma.css';
 
 const require = createRequire(import.meta.url);
 const express = require('express');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 627704a468f0ad2d5bab5291fd3aa05c1926067c
 const app = express();
 const axios = require('axios');
 const expressSession = require('express-session');
 const firebase = require('firebase');
+<<<<<<< HEAD
 //require("./render.js");
+=======
+>>>>>>> 627704a468f0ad2d5bab5291fd3aa05c1926067c
 app.use(require('express-bulma')("https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"));
 //const bulma = require('bulma/css/bulma.css');
 app.use(express.json());
@@ -69,9 +79,16 @@ export function deleteUser(username) {
 
 export async function getProfile(username) {
   firebase.database().ref('/profiles/' + username).once("value").then((snapshot) => {
+<<<<<<< HEAD
     snapshot.val();
   });
    
+=======
+    
+  });
+  
+  
+>>>>>>> 627704a468f0ad2d5bab5291fd3aa05c1926067c
 }
 //console.log(getProfile("testuser"));
 export function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
