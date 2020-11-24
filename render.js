@@ -1,6 +1,8 @@
 
 //var firebase = require('firebase');
 
+//const { default: Axios } = require("axios");
+
 
 
 
@@ -231,7 +233,7 @@ function cupdate() {
     updatestat();
 }
 }
-function updatescore(cupnum){
+async function updatescore(cupnum){
     if(cupnum == "final1"){
         let val = 10 - teamonescore;
         $("#rem1").replaceWith(`<div id ="rem1">Teamone cups remaining = ${val}</div>`);
@@ -317,6 +319,7 @@ function updatescore(cupnum){
         </div>`);
     }
     if(teamtwoscore == 10){
+        
         $("#t1").append(`
         
         
@@ -324,6 +327,20 @@ function updatescore(cupnum){
         </div>
        
         </div>`);
+        alert("axios to begin");
+        
+        let result = await axios({
+            method: 'put',
+            url: 'http://localhost:3002/api/update/testuser',
+            data: {
+                username: 'testuser',
+                cupsmadeGame: 5,
+                finalCupsMadeGame: 1,
+                name: 'tester',
+                shots: 13,
+                gamesPlayed: 1
+            }
+        }).then(alert("axios finished"));
         //updateStats("testuser", 5, 1, 13);
     
     }
@@ -372,8 +389,10 @@ $("#teamtwo").on("click", ".cup", cupdate);
 
 //console.log("statsupdated");
 $(function(){
+    
     rungame();
     //updateStats("testuser", 5, 1, 12);
+    
     
     
 });
