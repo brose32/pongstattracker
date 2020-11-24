@@ -437,6 +437,7 @@ $(".mainpage").on("click", "#play", addnames);
 $(async function(){
     let x = await firebase.auth().currentUser;
    // alert(x.uid);
+    //alert("rendering");
     let uID = x.uid;
     let y = await axios({
         method: 'get',

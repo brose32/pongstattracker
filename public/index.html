@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css" />
     <style>
     
     .mainpage{
@@ -64,16 +64,17 @@
 
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-  <script src="render.js" type="module"></script>
+  
 
   <script>
       firebase.auth().onAuthStateChanged(function(user) {
+          //alert("hello")
           if (user) {
               //alert('hello');
           } else {
               window.location.href = "login.html"
           }
-      })
+      });
   </script>
 </body>
 

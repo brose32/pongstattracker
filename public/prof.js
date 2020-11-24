@@ -2,7 +2,7 @@ async function sTSs4(){
     
         let result = await axios({
         method: 'get',
-        url: 'http://localhost:3002/api/profiles/deebs'
+        url: 'http://localhost:3002/api/profiles/' + loggedinUser
     }).then(res => ($("#dudes").append(`
     <div class = "title">${res.data.name}</div>
     <div class = "title">${res.data.username}</div>
@@ -20,7 +20,7 @@ async function sTSs3(){
     
     let result = await axios({
     method: 'delete',
-    url: 'http://localhost:3002/api//deleteProfile/deebs'
+    url: 'http://localhost:3002/api//deleteProfile/' + loggedinUser
 }).then(($("#dudes").append(`
 profile deletes
 `))).catch((error) => {
@@ -45,16 +45,16 @@ alert(loggedinUser);
 //console.log("statsupdated");
 $(async function(){
     let x = await firebase.auth().currentUser;
-    // alert(x.uid);
-     let uID = x.uid;
-     let y = await axios({
-         method: 'get',
-         url: 'http://localhost:3002/api/getIDpair/id=' + uID
-     });
+   // alert(x.uid);
+   // alert("rendering");
+    let y = await axios({
+        method: 'get',
+        url: 'http://localhost:3002/api/getIDpair/id=' + x.uid
+    });
+  //  alert("done");
     const loggedinUser = y.data;
+    alert(loggedinUser);
     rungame();
-//updateStats("testuser", 5, 1, 12);
-
 
 
 });
