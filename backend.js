@@ -11,11 +11,13 @@ const app = express();
 const axios = require('axios');
 const expressSession = require('express-session');
 const firebase = require('firebase');
+require("jquery");
 //require("./render.js");
 app.use(require('express-bulma')("https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"));
 //const bulma = require('bulma/css/bulma.css');
 app.use(express.json());
 app.use(express.static('images'));
+
 //const jquery = require('jquery');
 app.set('view engine', 'pug');
 
@@ -46,12 +48,12 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 // Get a reference to the database service
-var database = firebase.database();
+var dab = firebase.database();
 
 
-module.exports = function createNewUser(username, password, name) {
+module.exports = async function createNewUser(username, password, name) {
   //need to add if username is taken
-  firebase.database().ref('profiles/' + username).set({
+  await dab.ref('profiles/' + username).set({
     username: username,
     password: password,
     name: name,
@@ -62,25 +64,25 @@ module.exports = function createNewUser(username, password, name) {
   });
 }
 
-module.exports = function deleteUser(username) {
-  firebase.database().ref('/profiles/' + username).remove();
+module.exports = async function deleteUser(username) {
+  await dab.ref('/profiles/' + username).remove();
 }
 
 module.exports = async function getProfile(username) {
-  firebase.database().ref('/profiles/' + username).once("value").then((snapshot) => {
-    snapshot.val();
+  let x = await firebase.database().ref('/profiles/' + username).once("value").then((snapshot) => {
+    return snapshot.val();
   });
    
 }
 //console.log(getProfile("testuser"));
-module.exports = function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
+function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
   var ref = firebase.database().ref('/profiles/' + username);
   var previous = ref.once("value").then((snapshot) => {
     let x = snapshot.val();
     postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shots, x);
   });
 }
-module.exports = function postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shotsGame, previous) {
+function postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shotsGame, previous) {
   const careerCupsMade = cupsMadeGame + previous.cupsmade;
   const careerFinalCupsMade = finalCupsMadeGame + previous.finalCupsMade;
   const careerShots = shotsGame + previous.shots;
@@ -95,7 +97,7 @@ module.exports = function postUpdatedStatstoServer(username, cupsMadeGame, final
     gamesPlayed: careerGamesPlayed
   });
 }
-
+updateStats("testuser", 2, 1, 740);
 function getAllProfilesData() {
   var ref = firebase.database().ref('/profiles');
   ref.on("values", function(snapshot) {
@@ -149,6 +151,11 @@ window.onload = function()
     {
         alert('jQuery is not loaded');
     }
+}
+</script>
+<script>
+$(document).onclick(function() {
+   alert("hello");
 }
 </script>
       <div class= "big-text" style= "font-size: 40px">LOGIN</div>
