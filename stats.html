@@ -20,51 +20,56 @@
         </div>
     </section>
 
-    <section class="section is-medium">
+    <section class="section is-small">
         <div class="container is-fluid landing-container">
             <div class="columns is-centered search-box">
 
-                <div class="column is-6">
+                <div class="column is-4">
                     <form class="search-label label">
                         <div class="field">
                             <div class="control">
-                                <input id="playerName" class="input is-primary" placeholder="Player Name Here"
-                                    type="/search" value="">
+                                <form autocomplete="off" action="/action_page.php">
+                                    <div class="autocomplete">
+                                        <input id="myInput" class="input is-primary" placeholder="Player Name Here"
+                                            type="text" name="myCountry">
+                                    </div>
+
+                                </form>
                             </div>
                         </div>
                     </form>
                 </div>
-
+                <!--
                 <div class="column is-2">
                     <div class="buttons">
                         <button class="button is-primary search-button">Find Player</button>
                     </div>
                 </div>
-
+            -->
             </div>
         </div>
     </section>
 
     <script>
         function findPlayer() {
-            const player = localStorage.getItem($("#playerName"))
+            alert("name entered");
         }
     </script>
 
-    <section class="section is-large">
+    <section class="section is-small">
         <div class="container is-fluid landing-container">
-            <div class="columns is-multiline">
-                <div class="column is-one-quarter">
-                    <code>is-one-quarter</code>
+            <div class="columns is-centered">
+                <div class="column is-3">
+                    <code>one-fourth-of-screen</code>
                 </div>
-                <div class="column is-one-quarter">
-                    <code>is-one-quarter</code>
+                <div class="column is-3">
+                    <code>one-fourth-of-screen</code>
                 </div>
-                <div class="column is-one-quarter">
-                    <code>is-one-quarter</code>
+                <div class="column is-3">
+                    <code>one-fourth-of-screen</code>
                 </div>
-                <div class="column is-one-quarter">
-                    <code>is-one-quarter</code>
+                <div class="column is-3">
+                    <code>one-fourth-of-screen</code>
                 </div>
             </div>
     </section>

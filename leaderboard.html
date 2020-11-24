@@ -25,13 +25,32 @@
     <section class="section">
         <div class="container is-fluid">
             <div class="buttons is-centered">
-                <button class="button is-large" type="button">Cups Made</button>
-                <button class="button is-large" type="button">Total Wins</button>
-                <button class="button is-large" type="button">Win Percentage</button>
-                <button class="button is-large" type="button">Accuracy</button>
+                <button id="cupsButton" onclick="buttonFunction(id)" class="button is-large" type="button">Cups
+                    Made</button>
+                <button id="winsButton" onclick="buttonFunction(id)" class="button is-large" type="button">Total
+                    Wins</button>
+                <button id="win%Button" onclick="buttonFunction(id)" class="button is-large" type="button">Win
+                    Percentage</button>
+                <button id="accuracyButton" onclick="buttonFunction(id)" class="button is-large"
+                    type="button">Accuracy</button>
             </div>
         </div>
     </section>
+
+    <script>
+        function buttonFunction(id) {
+            document.getElementById("cupsButton").className = "button is-large";
+            document.getElementById("winsButton").className = "button is-large";
+            document.getElementById("win%Button").className = "button is-large";
+            document.getElementById("accuracyButton").className = "button is-large";
+
+            document.getElementById(id).className = "button is-large is-success is-selected";
+            updateTable(id);
+        }
+        function updateTable(id) {
+
+        }
+    </script>
 
     <!-- table section -->
     <section class="section">
@@ -49,38 +68,38 @@
                 <tbody>
                     <tr>
                         <th>1</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th id="rank1name"></th>
+                        <th id="rank1cupsmade"></th>
+                        <th id="rank1wins"></th>
+                        <th id="rank1win%"></th>
                     </tr>
                     <tr>
                         <th>2</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th id="rank2name"></th>
+                        <th id="rank2cupsmade"></th>
+                        <th id="rank2wins"></th>
+                        <th id="rank2win%"></th>
                     </tr>
                     <tr>
                         <th>3</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th id="rank3name"></th>
+                        <th id="rank3cupsmade"></th>
+                        <th id="rank3wins"></th>
+                        <th id="rank3win%"></th>
                     </tr>
                     <tr>
                         <th>4</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th id="rank4name"></th>
+                        <th id="rank4cupsmade"></th>
+                        <th id="rank4wins"></th>
+                        <th id="rank4win%"></th>
                     </tr>
                     <tr>
                         <th>5</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th id="rank5name"></th>
+                        <th id="rank5cupsmade"></th>
+                        <th id="rank5wins"></th>
+                        <th id="rank5win%"></th>
                     </tr>
                 </tbody>
             </table>
