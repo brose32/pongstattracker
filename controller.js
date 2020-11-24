@@ -50,11 +50,7 @@ exports.playerProfile = async (req, res, next) => {
     let x = await db.ref('/profiles/' + req.params.username).once("value").then((snapshot) => {
         return snapshot.val();
     });
-<<<<<<< HEAD
-    //console.log(x.cupsmade);
-=======
     console.log("player profile function" + JSON.stringify(x));
->>>>>>> ba5378424c4d417e993edbbca31a60e1bf6ad578
     res.status(200).send(x);
     
 }
