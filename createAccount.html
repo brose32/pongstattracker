@@ -69,7 +69,30 @@
           let username = document.getElementById("newusername").value;
           let userEmail = document.getElementById("newemail").value;
           let userPass = document.getElementById("newpassword").value;
-          let x = await axios({
+          let uID;
+
+          //stores uid in the 
+          alert("hello");
+          await firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then((user) => {
+            var x = firebase.auth().currentUser;
+            uID = x.uid;
+          });
+          let z = await axios({
+              method: 'post',
+              url: `http://localhost:3002/api/addIDpair/id=${uID}&user=${username}`
+          });
+          let y = await axios({
+              method: "post",
+              url: `http://localhost:3002/api/addProfile/username=${username}&name=jim`
+          }).then((response) => {
+              window.location.href = "index.html"
+          });
+
+          
+          
+          
+//works
+          /*let y = await axios({
               method: "post",
               url: `http://localhost:3002/api/addProfile/username=${username}&name=${userEmail}`
           }).then((response) => {
@@ -80,7 +103,11 @@
                 window.location.href = "index.html"
             });
           
-          });
+          });*/
+          
+            
+          
+    
           
          
       }

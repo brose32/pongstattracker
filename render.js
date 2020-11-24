@@ -429,10 +429,20 @@ $(".mainpage").on("click", "#play", addnames);
 //updateStats("testuser", 100, 1, 250);
 
 //console.log("statsupdated");
-$(function(){
-    
+
+$(async function(){
+    let x = await firebase.auth().currentUser;
+   // alert(x.uid);
+    let uID = x.uid;
+    let y = await axios({
+        method: 'get',
+        url: 'http://localhost:3002/api/getIDpair/id=' + uID
+        
+    });
+    const loggedinUser = y.data;
+    //alert(loggedinUser);
     rungame();
-    //updateStats("testuser", 5, 1, 12);
+
     
     
     
