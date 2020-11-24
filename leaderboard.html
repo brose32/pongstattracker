@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:rgb(255, 205, 113)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+    <title>Player Stats</title>
+</head>
+
+<body>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="render.js" type="module"></script>
+
+    <!-- title section -->
+    <section class="hero is-primary has-text-centered">
+        <div class="hero-body">
+            <div class="container is-fluid">
+                <h1 class="title">Leaderboard</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- sort by section -->
+    <section class="section">
+        <div class="container is-fluid">
+            <div class="buttons is-centered">
+                <button id="cupsButton" onclick="buttonFunction(id)" class="button is-large" type="button">Cups
+                    Made</button>
+                <button id="winsButton" onclick="buttonFunction(id)" class="button is-large" type="button">Total
+                    Wins</button>
+                <button id="win%Button" onclick="buttonFunction(id)" class="button is-large" type="button">Win
+                    Percentage</button>
+                <button id="accuracyButton" onclick="buttonFunction(id)" class="button is-large"
+                    type="button">Accuracy</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function buttonFunction(id) {
+            document.getElementById("cupsButton").className = "button is-large";
+            document.getElementById("winsButton").className = "button is-large";
+            document.getElementById("win%Button").className = "button is-large";
+            document.getElementById("accuracyButton").className = "button is-large";
+
+            document.getElementById(id).className = "button is-large is-success is-selected";
+            updateTable(id);
+        }
+        function updateTable(id) {
+
+        }
+    </script>
+
+    <!-- table section -->
+    <section class="section">
+        <div class="container is-fluid">
+            <table class="table is-hoverable is-fullwidth">
+                <thead>
+                    <tr>
+                        <th><abbr title="Rank">Rank</abbr></th>
+                        <th><abbr title="Name">Name</abbr></th>
+                        <th><abbr title="Cups Made">Cups Made</abbr></th>
+                        <th><abbr title="Wins">Wins</abbr></th>
+                        <th><abbr title="Win %">Win %</abbr></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>1</th>
+                        <th id="rank1name"></th>
+                        <th id="rank1cupsmade"></th>
+                        <th id="rank1wins"></th>
+                        <th id="rank1win%"></th>
+                    </tr>
+                    <tr>
+                        <th>2</th>
+                        <th id="rank2name"></th>
+                        <th id="rank2cupsmade"></th>
+                        <th id="rank2wins"></th>
+                        <th id="rank2win%"></th>
+                    </tr>
+                    <tr>
+                        <th>3</th>
+                        <th id="rank3name"></th>
+                        <th id="rank3cupsmade"></th>
+                        <th id="rank3wins"></th>
+                        <th id="rank3win%"></th>
+                    </tr>
+                    <tr>
+                        <th>4</th>
+                        <th id="rank4name"></th>
+                        <th id="rank4cupsmade"></th>
+                        <th id="rank4wins"></th>
+                        <th id="rank4win%"></th>
+                    </tr>
+                    <tr>
+                        <th>5</th>
+                        <th id="rank5name"></th>
+                        <th id="rank5cupsmade"></th>
+                        <th id="rank5wins"></th>
+                        <th id="rank5win%"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</body>
+
+</html>
