@@ -28,6 +28,8 @@ app.use(cors());
 const api = require('./routes');
 const axios = require('axios');
 app.use('/api', api);
+
+
 /*const axios = require('axios')
 // Configure app to use route
 app.use('/api', api);
@@ -44,7 +46,7 @@ app.get('/achievements', async (req, res) => {
     } else {
         res.status(500)
     }
-})*/
+})
 /*app.get('/', (req, res) => {
     res.sendFile("index.html");
 })*/

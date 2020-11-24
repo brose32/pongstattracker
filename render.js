@@ -328,16 +328,10 @@ async function updatescore(cupnum){
         
         let result = await axios({
             method: 'put',
-            url: 'http://localhost:3002/api/update/testuser',
-            data: {
-                username: 'testuser',
-                cupsmadeGame: 5,
-                finalCupsMadeGame: 1,
-                name: 'tester',
-                shots: 13,
-                gamesPlayed: 1
-            }
-        }).then(alert("axios finished"));
+            url: 'http://localhost:3002/api/update/username=theboy&cups=4&finalcup=1&shots=11'
+        }).then(alert("axios finished")).catch((error) => {
+            alert("fuck");
+        });
         //updateStats("testuser", 5, 1, 13);
     
     }
