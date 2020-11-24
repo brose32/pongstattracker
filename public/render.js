@@ -327,7 +327,10 @@ function updatescore(cupnum){
         </div>
        
         </div>`);
-        
+        sTSs1();
+        sTSs2();
+        sTSs3();
+        sTSs4();
         //updateStats("testuser", 5, 1, 13);
     
     }
@@ -339,19 +342,14 @@ function updatescore(cupnum){
         </div>
        
         </div>`);
+        sTSs1();
+        sTSs2();
+        sTSs3();
+        sTSs4();
         
     }
 }
-async function sTSss(){
-    alert("axios to begin");
-        
-        let result = await axios({
-            method: 'post',
-            url: 'http://localhost:3002/api/addProfile/username=deebs&name=jerry'
-        }).then(alert("axios finished")).catch((error) => {
-            alert("fuck");
-        });
-}
+
 async function sTSs1(){
     
         
@@ -359,7 +357,7 @@ async function sTSs1(){
             method: 'put',
             url: 'http://localhost:3002/api/update/username=' + player1 + '&cups='+ p1hit+ '&finalcup=1&shots=' + p1shot
         }).then().catch((error) => {
-            alert("fuck");
+            alert("no user found");
         });
        
 }
@@ -370,7 +368,7 @@ async function sTSs2(){
             method: 'put',
             url: 'http://localhost:3002/api/update/username=' + player2 + '&cups='+ p2hit+ '&finalcup=1&shots=' + p2shot
         }).then().catch((error) => {
-            alert("fuck");
+            alert("no user found");
         });
        
 }
@@ -381,7 +379,7 @@ async function sTSs3(){
             method: 'put',
             url: 'http://localhost:3002/api/update/username=' + player3 + '&cups='+ p3hit+ '&finalcup=1&shots=' + p3shot
         }).then().catch((error) => {
-            alert("fuck");
+            alert("no user found");
         });
        
 }
@@ -392,10 +390,12 @@ async function sTSs4(){
             method: 'put',
             url: 'http://localhost:3002/api/update/username=' + player4 + '&cups='+ p4hit+ '&finalcup=1&shots=' + p4shot
         }).then().catch((error) => {
-            alert("fuck");
+            alert("no user found");
         });
        
 }
+
+
 const rungame = function(){
 $(".navbar").append(`<div id="select">Curent Player: ${player1}   Current Shot Type: ${shottype}</div>`)
 $("#players").replaceWith(`<div id="players">Player Select
@@ -420,10 +420,6 @@ $("#players").on("click", ".button3", updateplayer);
 $("#shots").on("click", ".button3", updateshot);
 $("#teamone").on("click", ".cup", cupdate);
 $("#teamtwo").on("click", ".cup", cupdate);
-$("#shots").on("click", "#end", sTSs1);
-$("#shots").on("click", "#end", sTSs2);
-$("#shots").on("click", "#end", sTSs3);
-$("#shots").on("click", "#end", sTSs4);
 $(".mainpage").on("click", "#play", addnames);
 
 

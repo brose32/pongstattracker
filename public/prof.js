@@ -1,18 +1,11 @@
 async function sTSs4(){
     
-        let result = await axios({
+        
+    let result = await axios({
         method: 'get',
-        url: 'http://localhost:3002/api/profiles/' + loggedinUser
-    }).then(res => ($("#dudes").append(`
-    <div class = "title">${res.data.name}</div>
-    <div class = "title">${res.data.username}</div>
-    <div class = "subtitle">Cupsmade: ${res.data.cupsmade}</div>
-    <div class = "subtitle">Shots Taken: ${res.data.shots}</div>
-    
-    `))).catch((error) => {
-        alert("fuck");
+        url: 'http://localhost:3002/api/leaderboard'
     });
-    
+    alert(result);
    
 }
 
@@ -26,12 +19,26 @@ profile deletes
 `))).catch((error) => {
     alert("fuck");
 });
-
-
 }
-const rungame = function(){
 
-$("#dudes").on("click", "#dude", sTSs4);
+async function sTSs5(){
+    
+    var jerb = firebase.auth().currentUser;
+    var jerb1 = firebase.auth().currentUser;
+    
+      alert(jerb1.email);
+    sTSs4();
+  
+  
+}
+
+
+
+const rungame = function(){
+   
+    
+    
+$("#dudes").on("click", "#dude", sTSs5);
 $("#dudes").on("click", "#delete", sTSs3);
 alert(loggedinUser);
 
