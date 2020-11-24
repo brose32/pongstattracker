@@ -43,9 +43,10 @@ const firebaseConfig = {
 exports.leaderboard = async (req, res, next) => {
     console.log("leaderboard func");
     let x = await db.ref('/profiles/').once("value").then((snapshot) => {
-        console.log(snapshot.val());
+       // console.log(snapshot.val());
+       return snapshot.val();
     });
-    res.stauts(200).send(x);
+    res.status(200).send(x);
 }
 exports.playerProfile = async (req, res, next) => {
     let x = await db.ref('/profiles/' + req.params.username).once("value").then((snapshot) => {
