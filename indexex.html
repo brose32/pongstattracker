@@ -214,6 +214,7 @@ color: khaki;
 <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
 
 <script>
   // Your web app's Firebase configuration
@@ -232,7 +233,15 @@ color: khaki;
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
 </script>
-
+<script>
+  firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+          //alert('hello');
+      } else {
+          window.location.href = "login.html"
+      }
+  })
+</script>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js'></script>

@@ -2,7 +2,7 @@
   "name": "pongstattracker",
   "version": "1.0.0",
   "description": "COMP 426 Final Project\r Ben Rosenberger Brendan Fusik Michael Tyndall Ritwik Pavan\r This application tracks the stats of each player during a pong game.",
-  "main": "index.html",
+  "main": "server.js",
   "dependencies": {
     "axios": "^0.21.0",
     "body-parser": "^1.19.0",

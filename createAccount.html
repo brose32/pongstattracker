@@ -10,16 +10,17 @@
 </head>
 <body>
     
-    <div class= "big-text" style= "font-size: 40px">LOGIN</div>
+    <div class= "big-text" style= "font-size: 40px">Create an account</div>
 <div class = "columns">
         <div class= "column">
             <form>
-                    <input id = "email" value ="email"></input>
-                    <input id = "password" value="password"></input>
-                    <button id="login">Login</button>
-                    <label><a href="createAccount.html">First time? Create an account</a></label>
-
-
+                    <label>Username:</label>
+                    <input id = "newusername"></input> <br>
+                    <label>Email:</label>
+                    <input id = "newemail"></input> <br>
+                    <label>Password:</label>
+                    <input id = "newpassword"></input> <br>
+                    <button id="createaccount">Create account</button>
             </form>
 
         </div>
@@ -39,6 +40,7 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
 
 <script>
   // Your web app's Firebase configuration
@@ -59,33 +61,31 @@
 </script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js'></script>
-  
   <script src="render.js" type="module"></script>
     
   <script>
-      const handleLoginButton = function(event) {
+      const handleCreateAccountButton = async function(event) {
           event.preventDefault();
-          
-          let userEmail = document.getElementById("email").value;
-          let userPass = document.getElementById("password").value;
-          
-          
-          firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(
-              (user) => { 
+          let username = document.getElementById("newusername").value;
+          let userEmail = document.getElementById("newemail").value;
+          let userPass = document.getElementById("newpassword").value;
+          let x = await axios({
+              method: "post",
+              url: `http://localhost:3002/api/addProfile/username=${username}&name=jim`
+          }).then((response) => {
+             // alert("posted to db");
+            firebase.auth().createUserWithEmailAndPassword(userEmail, userPass).then((user) => {
                 var x = firebase.auth().currentUser;
                 alert(x.uid);
-                window.location.href = "index.html";
-                //console.log(user.uid);
-              }
-          ).catch((error) => {
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            alert(errorMessage);
+                window.location.href = "index.html"
             });
-            
+          
+          });
+          
+         
       }
 
-      $("#login").on("click", handleLoginButton);
+      $("#createaccount").on("click", handleCreateAccountButton);
   </script>
 
 </body>

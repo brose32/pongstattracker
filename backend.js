@@ -1,11 +1,4 @@
 
-
-//import { renderboard } from "./render.js";
-
-//import { createRequire } from 'module';
-//import 'bulma/css/bulma.css';
-
-//const require = createRequire(import.meta.url);
 const express = require('express');
 const app = express();
 const axios = require('axios');

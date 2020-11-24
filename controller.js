@@ -37,15 +37,7 @@ const firebaseConfig = {
     db.ref('/profiles/' + "testuser").once("value").then((snapshot) => {
         console.log(snapshot.val());
       });
-    /*let body = ''
-    const snapshot = await dataBase.collection('profiles').get();
-    snapshot.forEach((doc) => {
-        body += doc.data().first
-        
-    });
-    res.status(200).json({
-        body: 'This is a Server API Test ' + body + ' test'
-    });*/
+   
 };
 
 exports.leaderboard = async (req, res, next) => {
@@ -58,8 +50,8 @@ exports.playerProfile = async (req, res, next) => {
     let x = await db.ref('/profiles/' + req.params.username).once("value").then((snapshot) => {
         return snapshot.val();
     });
-    console.log("player profile function" + JSON.stringify(x));
-    res.status(200).send(JSON.stringify(x));
+    //console.log(x.cupsmade);
+    res.status(200).send(x);
     
 }
 exports.createNewUser = async (req, res, next) => {
