@@ -59,7 +59,7 @@ exports.playerProfile = async (req, res, next) => {
         return snapshot.val();
     });
     console.log("player profile function" + JSON.stringify(x));
-    res.status(200).send(JSON.stringify(x));
+    res.status(200).send(x);
     
 }
 exports.createNewUser = async (req, res, next) => {
