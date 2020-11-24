@@ -1,16 +1,20 @@
-//var backend = require('./backend');
+
 //var firebase = require('firebase');
 
 //const { default: Axios } = require("axios");
 
 
+
+
+
+
 let shottype = "hit";
-let pp= "";
-let player1 = "player1";
-let player2 = "banaa";
-let player3 = "fffff";
+let pp= localStorage["p1"];
+let player1 = localStorage["p1"];
+let player2 = localStorage["p2"];
+let player3 = localStorage["p3"];
 let player = player1;
-let player4 = "fafdfsdfsdaf";
+let player4 = localStorage["p4"];
 let teamtwoscore = 0;
 let teamonescore = 0;
 let p1shot = 0;
@@ -105,19 +109,18 @@ const renderboard = function () {
 }
 
 
-function updateplayer(){
+export function updateplayer(){
     
     player = this.id;
-    //pp= localStorage[player];
-    pp="banakk";
-    $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}`);
+    pp= localStorage[player];
+    
+    $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}</div>`);
     
 }
 
 function updateshot(){
-    
-   shottype = this.id;
-   $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}`);
+    shottype = this.id;
+   $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}</div>`);
 }
 
 function check(){
@@ -131,10 +134,10 @@ function check(){
 
 function addnames(){
     
-    player1 = $("#name1").val();
-    player2 = $("#name2").val();
-    player3 = $("#name12").val();
-    player4 = $("#name22").val();
+    localStorage['p1'] = $("#name1").val();
+    localStorage['p2'] = $("#name2").val();
+    localStorage['p3'] = $("#name12").val();
+    localStorage['p4'] = $("#name22").val();
 }
 
 function updatestat(){
@@ -230,7 +233,7 @@ function cupdate() {
     updatestat();
 }
 }
-async function updatescore(cupnum){
+function updatescore(cupnum){
     if(cupnum == "final1"){
         let val = 10 - teamonescore;
         $("#rem1").replaceWith(`<div id ="rem1">Teamone cups remaining = ${val}</div>`);
@@ -324,14 +327,7 @@ async function updatescore(cupnum){
         </div>
        
         </div>`);
-        alert("axios to begin");
         
-        let result = await axios({
-            method: 'put',
-            url: 'http://localhost:3002/api/update/username=theboy&cups=4&finalcup=1&shots=11'
-        }).then(alert("axios finished")).catch((error) => {
-            alert("fuck");
-        });
         //updateStats("testuser", 5, 1, 13);
     
     }
@@ -346,9 +342,62 @@ async function updatescore(cupnum){
         
     }
 }
-
+async function sTSss(){
+    alert("axios to begin");
+        
+        let result = await axios({
+            method: 'post',
+            url: 'http://localhost:3002/api/addProfile/username=deebs&name=jerry'
+        }).then(alert("axios finished")).catch((error) => {
+            alert("fuck");
+        });
+}
+async function sTSs1(){
+    
+        
+        let result = await axios({
+            method: 'put',
+            url: 'http://localhost:3002/api/update/username=' + player1 + '&cups='+ p1hit+ '&finalcup=1&shots=' + p1shot
+        }).then().catch((error) => {
+            alert("fuck");
+        });
+       
+}
+async function sTSs2(){
+   
+        
+        let result = await axios({
+            method: 'put',
+            url: 'http://localhost:3002/api/update/username=' + player2 + '&cups='+ p2hit+ '&finalcup=1&shots=' + p2shot
+        }).then().catch((error) => {
+            alert("fuck");
+        });
+       
+}
+async function sTSs3(){
+    
+        
+        let result = await axios({
+            method: 'put',
+            url: 'http://localhost:3002/api/update/username=' + player3 + '&cups='+ p3hit+ '&finalcup=1&shots=' + p3shot
+        }).then().catch((error) => {
+            alert("fuck");
+        });
+       
+}
+async function sTSs4(){
+    
+        
+        let result = await axios({
+            method: 'put',
+            url: 'http://localhost:3002/api/update/username=' + player4 + '&cups='+ p4hit+ '&finalcup=1&shots=' + p4shot
+        }).then().catch((error) => {
+            alert("fuck");
+        });
+       
+}
 const rungame = function(){
-$(".navbar").append(`<div id="select">Curent Player: ${player}   Current Shot Type: ${shottype}</div>`)
+$(".navbar").append(`<div id="select">Curent Player: ${player1}   Current Shot Type: ${shottype}</div>`)
 $("#players").replaceWith(`<div id="players">Player Select
 <button id="p1" class="button3">${player1}</button>
 <button id="p2" class="button3">${player2}</button>
@@ -371,6 +420,12 @@ $("#players").on("click", ".button3", updateplayer);
 $("#shots").on("click", ".button3", updateshot);
 $("#teamone").on("click", ".cup", cupdate);
 $("#teamtwo").on("click", ".cup", cupdate);
+$("#shots").on("click", "#end", sTSs1);
+$("#shots").on("click", "#end", sTSs2);
+$("#shots").on("click", "#end", sTSs3);
+$("#shots").on("click", "#end", sTSs4);
+$(".mainpage").on("click", "#play", addnames);
+
 
 
       

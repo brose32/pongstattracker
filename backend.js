@@ -6,13 +6,6 @@ const expressSession = require('express-session');
 const firebase = require('firebase');
 require("jquery");
 //require("./render.js");
-app.use(require('express-bulma')("https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"));
-//const bulma = require('bulma/css/bulma.css');
-app.use(express.json());
-app.use(express.static('images'));
-
-//const jquery = require('jquery');
-app.set('view engine', 'pug');
 
 //app.use(expressSession(options: {
 //  name: "pongstatCookie",
@@ -21,13 +14,10 @@ app.set('view engine', 'pug');
 //  saveUnitialized: false
 //}));
 
-const port = process.env.port || 3000;
-
 //const Secret = require("./secret.js");
-const profiles = [
-    {userID: 'nipsman', name: 'jimmy', cupsmade: 69},
-    {userID: 'grassfairy6', name: 'bob', cupsmade: 4}
-];
+function hi(){
+  alert("cop");
+}
 
 const firebaseConfig = {
   apiKey: "AIzaSyBHyOIcIBbAAJ4CUgRMjNo4lck9FIIiY54",
@@ -80,7 +70,7 @@ function postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, sho
   const careerFinalCupsMade = finalCupsMadeGame + previous.finalCupsMade;
   const careerShots = shotsGame + previous.shots;
   const careerGamesPlayed = previous.gamesPlayed + 1;
-  firebase.database().ref('/profiles/' + username).set({
+  database.ref('/profiles/' + username).set({
     name: previous.name,
     username: previous.username,
     password: previous.password,
@@ -102,19 +92,21 @@ function getAllProfilesData() {
  
 }
 
-module.exports = app.get('/', (req, res) => {
-    //res.send(createStuff());
-    if (true) {
-      res.redirect('/setup');
-    }
-    //res.send("hello");
-   
-    });
+const rungame = function(){
+  const firebaseConfig = {
+  apiKey: "AIzaSyBHyOIcIBbAAJ4CUgRMjNo4lck9FIIiY54",
+  authDomain: "pongstattracker.firebaseapp.com",
+  databaseURL: "https://pongstattracker.firebaseio.com",
+  projectId: "pongstattracker",
+  storageBucket: "pongstattracker.appspot.com",
+  messagingSenderId: "874355232113",
+  appId: "1:874355232113:web:f4c6802954a7193f9b7ad0",
+  measurementId: "G-6H8RS5YSKE"
+};
 
-app.get('/setup', (req, res) => {
-  res.render('setup');
-
-});
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+  $("#shots").on("click", ".button3", hi);
 
 app.get('/login', (req, res) => {
   //res.render('login');
@@ -416,38 +408,15 @@ window.onload = function()
     </html>`);
   })
 
+ 
+ 
+       
+ }
 
-//when user gets profile page gets the player profile stats from the database and loads profile page for that player
-app.get('/profiles/:username', (req, res) => {
-  //let stuff = getAllProfilesData();
-  var ref = firebase.database().ref('/profiles/' + req.params.username);
-  ref.once("value", function(snapshot) {
-    let x = snapshot.val();
-    //console.log(x);
-    //need to add function that creates the player profile webpage and replace below
-    res.send(`username: ${x.username} player real name: ${x.name} <br>
-    cups made: ${x.cupsmade}`);
- }, function (error) {
-    console.log("Error: " + error.code);
- });
-  
+$(function(){
+ rungame();
+ 
 });
 
 
-//example post function to add a new profile
-//app.post('/api/profiles', (req, res) =>{
-//  const player = {
-//    userID: req.body.userID,
-//    name: req.body.name,
-//    cupsmade: req.body.cupsmade
-//  };
-//  profiles.push(player);
-//  res.send(player);
-//});
-
-
-
-  app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
-  });
-
+//when user gets profile page gets the player profile stats from the database and loads profile page for that player
