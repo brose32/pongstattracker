@@ -42,19 +42,19 @@ const firebaseConfig = {
 
 exports.leaderboard = async (req, res, next) => {
     console.log("leaderboard func");
-    db.ref('/profiles/').once("value").then((snapshot) => {
+    let x = await db.ref('/profiles/').once("value").then((snapshot) => {
         console.log(snapshot.val());
     });
+    res.stauts(200).send(x);
 }
 exports.playerProfile = async (req, res, next) => {
     let x = await db.ref('/profiles/' + req.params.username).once("value").then((snapshot) => {
         return snapshot.val();
     });
-<<<<<<< HEAD
+
     //console.log(x.cupsmade);
-=======
+
     console.log("player profile function" + JSON.stringify(x));
->>>>>>> ba5378424c4d417e993edbbca31a60e1bf6ad578
     res.status(200).send(x);
     
 }
@@ -78,7 +78,29 @@ exports.deleteProfile = async (req, res, next) => {
     res.send("profile deleted");
 }
 
+exports.addID = async (req, res, next) => {
+    console.log("adding uid/username pair");
+    let x = await db.ref(req.params.id).set({
+        user : req.params.u
+    });
+    res.send("id pair added");
+}
 
+exports.getUser = async (req, res, next) => {
+    console.log("getting the logged in username");
+    let x = await db.ref(req.params.id).once("value").then((snapshot) => {
+        return snapshot.val();
+    });
+    res.send(x.user);
+}
+
+exports.myProfile = async(req, res, next) => {
+    console.log("retrieving logged in user's profile");
+    let x = await db.ref('profiles/' + req.params.id).once("value").then((snapshot) => {
+        return snapshot.val();
+    });
+    res.send(x);
+}
 //currently set up for passing variables from recent game in url want to add
 //axios to add them as the body of request 
 exports.updateStats = async(req, res, next) => {
