@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:rgb(255, 205, 113)">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+    <title>Player Stats</title>
+</head>
+
+<body>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="render.js" type="module"></script>
+
+    <section class="hero is-primary has-text-centered">
+        <div class="hero-body">
+            <div class="container is-fluid">
+                <h1 class="title">Player Stats</h1>
+            </div>
+        </div>
+    </section>
+
+    <section class="section is-medium">
+        <div class="container is-fluid landing-container">
+            <div class="columns is-centered search-box">
+
+                <div class="column is-6">
+                    <form class="search-label label">
+                        <div class="field">
+                            <div class="control">
+                                <input id="playerName" class="input is-primary" placeholder="Player Name Here"
+                                    type="/search" value="">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="column is-2">
+                    <div class="buttons">
+                        <button class="button is-primary search-button">Find Player</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function findPlayer() {
+            const player = localStorage.getItem($("#playerName"))
+        }
+    </script>
+
+    <section class="section is-large">
+        <div class="container is-fluid landing-container">
+            <div class="columns is-multiline">
+                <div class="column is-one-quarter">
+                    <code>is-one-quarter</code>
+                </div>
+                <div class="column is-one-quarter">
+                    <code>is-one-quarter</code>
+                </div>
+                <div class="column is-one-quarter">
+                    <code>is-one-quarter</code>
+                </div>
+                <div class="column is-one-quarter">
+                    <code>is-one-quarter</code>
+                </div>
+            </div>
+    </section>
+
+</body>
+
+
+</html>
