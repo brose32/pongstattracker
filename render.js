@@ -1,14 +1,18 @@
-//var backend = require('./backend');
+
 //var firebase = require('firebase');
+
+
+
+
 
 
 let shottype = "hit";
 let pp= "";
-let player1 = "abc";
-let player2 = "banaa";
-let player3 = "fffff";
+let player1 = localStorage["p1"];
+let player2 = localStorage["p2"];
+let player3 = localStorage["p3"];
 let player = player1;
-let player4 = "fafdfsdfsdaf";
+let player4 = localStorage["p4"];
 let teamtwoscore = 0;
 let teamonescore = 0;
 let p1shot = 0;
@@ -103,7 +107,7 @@ const renderboard = function () {
 }
 
 
-function updateplayer(){
+export function updateplayer(){
     
     player = this.id;
     //pp= localStorage[player];
@@ -113,8 +117,7 @@ function updateplayer(){
 }
 
 function updateshot(){
-    
-   shottype = this.id;
+    shottype = this.id;
    $("#select").replaceWith(`<div id="select">Curent Player: ${pp}   Current Shot Type: ${shottype}`);
 }
 
@@ -360,6 +363,7 @@ $("#players").on("click", ".button3", updateplayer);
 $("#shots").on("click", ".button3", updateshot);
 $("#teamone").on("click", ".cup", cupdate);
 $("#teamtwo").on("click", ".cup", cupdate);
+
 
 
       

@@ -3,8 +3,7 @@
 
 <head>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
-  <script src="render.js" type="module"></script>
-  <script src="backend.js" type="module"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
@@ -20,11 +19,12 @@
       text-align: center;
       display: inline-block;
       color: rgb(255, 255, 255);
-      
-  
-    
+
+
+
 
     }
+
     #main {
       padding: 16px;
       margin-top: 30px;
@@ -71,9 +71,9 @@
     .pong {
       font-size: 36px;
       float: left;
-font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-background-color: black;
-color: khaki;    
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: black;
+      color: khaki;
     }
 
 
@@ -89,7 +89,7 @@ color: khaki;
 
 <body style="background-color: rgb(223, 197, 142)">
   <div class="navbar">
-    <div class = "pong">PONG</div>
+    <div class="pong">PONG</div>
     <div id="players">Player Select
       <button id="p1" class="button3">Player 1</button>
       <button id="p2" class="button3">Player 2</button>
@@ -210,11 +210,13 @@ color: khaki;
       </div>
     </div>
   </div>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 
-
-
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-firestore.js"></script>
+  <script src="backend.js" type = "module"></script> 
   
- 
+
 </body>
 
 </html>
