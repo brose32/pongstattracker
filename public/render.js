@@ -355,7 +355,7 @@ async function sTSs1(){
         
         let result = await axios({
             method: 'put',
-            url: 'http://localhost:3002/api/update/username=' + player1 + '&cups='+ p1hit+ '&finalcup=1&shots=' + p1shot
+            url: '/api/update/username=' + player1 + '&cups='+ p1hit+ '&finalcup=1&shots=' + p1shot
         }).then().catch((error) => {
             alert("no user found");
         });
@@ -366,7 +366,7 @@ async function sTSs2(){
         
         let result = await axios({
             method: 'put',
-            url: 'http://localhost:3002/api/update/username=' + player2 + '&cups='+ p2hit+ '&finalcup=1&shots=' + p2shot
+            url: '/api/update/username=' + player2 + '&cups='+ p2hit+ '&finalcup=1&shots=' + p2shot
         }).then().catch((error) => {
             alert("no user found");
         });
@@ -377,7 +377,7 @@ async function sTSs3(){
         
         let result = await axios({
             method: 'put',
-            url: 'http://localhost:3002/api/update/username=' + player3 + '&cups='+ p3hit+ '&finalcup=1&shots=' + p3shot
+            url: '/api/update/username=' + player3 + '&cups='+ p3hit+ '&finalcup=1&shots=' + p3shot
         }).then().catch((error) => {
             alert("no user found");
         });
@@ -388,7 +388,7 @@ async function sTSs4(){
         
         let result = await axios({
             method: 'put',
-            url: 'http://localhost:3002/api/update/username=' + player4 + '&cups='+ p4hit+ '&finalcup=1&shots=' + p4shot
+            url: '/api/update/username=' + player4 + '&cups='+ p4hit+ '&finalcup=1&shots=' + p4shot
         }).then().catch((error) => {
             alert("no user found");
         });
@@ -437,7 +437,7 @@ $(async function(){
     let uID = x.uid;
     let y = await axios({
         method: 'get',
-        url: 'http://localhost:3002/api/getIDpair/id=' + uID
+        url: '/api/getIDpair/id=' + uID
         
     });
     const loggedinUser = y.data;
