@@ -377,7 +377,7 @@ $(".mainpage").on("click", "#play", addnames);
     //alert(x);
     //alert("rendering");
     
-    rungame();
+rungame();
 
     
     
