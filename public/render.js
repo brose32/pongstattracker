@@ -1,20 +1,10 @@
-
-//var firebase = require('firebase');
-
-//const { default: Axios } = require("axios");
-
-
-
-
-
-
 let shottype = "hit";
-let pp= localStorage["p1"];
-let player1 = localStorage["p1"];
-let player2 = localStorage["p2"];
-let player3 = localStorage["p3"];
+let pp = sessionStorage["p1"];
+let player1 = sessionStorage["p1"];
+let player2 = sessionStorage["p2"];
+let player3 = sessionStorage["p3"];
 let player = player1;
-let player4 = localStorage["p4"];
+let player4 = sessionStorage["p4"];
 let teamtwoscore = 0;
 let teamonescore = 0;
 let p1shot = 0;
@@ -32,43 +22,18 @@ let p3miss = 0;
 let p4shot = 0;
 let p4hit = 0;
 let p4miss = 0;
-/*
-const firebaseConfig = {
-    apiKey: "AIzaSyBHyOIcIBbAAJ4CUgRMjNo4lck9FIIiY54",
-    authDomain: "pongstattracker.firebaseapp.com",
-    databaseURL: "https://pongstattracker.firebaseio.com",
-    projectId: "pongstattracker",
-    storageBucket: "pongstattracker.appspot.com",
-    messagingSenderId: "874355232113",
-    appId: "1:874355232113:web:f4c6802954a7193f9b7ad0",
-    measurementId: "G-6H8RS5YSKE"
-  };
-  firebase.initializeApp(firebaseConfig);
-  // Get a reference to the database service
-  var database = firebase.database();
 
-function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
-    var ref = firebase.database().ref('/profiles/' + username);
-    var previous = ref.once("value").then((snapshot) => {
-      let x = snapshot.val();
-      postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shots, x);
-    });
+
+
+async function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
+    const playerRef = await firebase.firestore().collection("profiles").doc(username);
+    playerRef.update({
+        cupsMade: firebase.firestore.FieldValue.increment(cupsMadeGame),
+        finalCupsMade: firebase.firestore.FieldValue.increment(finalCupsMadeGame),
+        shots: firebase.firestore.FieldValue.increment(shots),
+        gamesPlayed: firebase.firestore.FieldValue.increment(1)
+    })
   }
-function postUpdatedStatstoServer(username, cupsMadeGame, finalCupsMadeGame, shotsGame, previous) {
-    const careerCupsMade = cupsMadeGame + previous.cupsmade;
-    const careerFinalCupsMade = finalCupsMadeGame + previous.finalCupsMade;
-    const careerShots = shotsGame + previous.shots;
-    const careerGamesPlayed = previous.gamesPlayed + 1;
-    firebase.database().ref('/profiles/' + username).set({
-      name: previous.name,
-      username: previous.username,
-      password: previous.password,
-      cupsmade : careerCupsMade,
-      finalCupsMade : careerFinalCupsMade,
-      shots: careerShots,
-      gamesPlayed: careerGamesPlayed
-    });
-  }*/
 
 
 const renderboard = function () {
@@ -104,7 +69,6 @@ const renderboard = function () {
         </form>
         </div>
     `);
-    window.location.href = "C:\Users\fusik\pongstattracker\indexex.html";
     
 }
 
@@ -351,47 +315,25 @@ function updatescore(cupnum){
 }
 
 async function sTSs1(){
-    
-        
-        let result = await axios({
-            method: 'put',
-            url: '/api/update/username=' + player1 + '&cups='+ p1hit+ '&finalcup=1&shots=' + p1shot
-        }).then().catch((error) => {
-            alert("no user found");
-        });
+        updateStats(player1, p1hit, 1, p1shot)
        
 }
 async function sTSs2(){
    
+        updateStats(player2, p2hit, 0, p2shot)
         
-        let result = await axios({
-            method: 'put',
-            url: '/api/update/username=' + player2 + '&cups='+ p2hit+ '&finalcup=1&shots=' + p2shot
-        }).then().catch((error) => {
-            alert("no user found");
-        });
        
 }
 async function sTSs3(){
     
+        updateStats(player3, p3hit, 0, p3shot)
         
-        let result = await axios({
-            method: 'put',
-            url: '/api/update/username=' + player3 + '&cups='+ p3hit+ '&finalcup=1&shots=' + p3shot
-        }).then().catch((error) => {
-            alert("no user found");
-        });
        
 }
 async function sTSs4(){
     
         
-        let result = await axios({
-            method: 'put',
-            url: '/api/update/username=' + player4 + '&cups='+ p4hit+ '&finalcup=1&shots=' + p4shot
-        }).then().catch((error) => {
-            alert("no user found");
-        });
+        updateStats(player4, p4hit, 0, p4shot)
        
 }
 
@@ -430,21 +372,14 @@ $(".mainpage").on("click", "#play", addnames);
 
 //console.log("statsupdated");
 
-$(async function(){
-    let x = await firebase.auth().currentUser;
-   // alert(x.uid);
+//$(async function(){
+  //  let x = await firebase.auth().currentUser;
+    //alert(x);
     //alert("rendering");
-    let uID = x.uid;
-    let y = await axios({
-        method: 'get',
-        url: '/api/getIDpair/id=' + uID
-        
-    });
-    const loggedinUser = y.data;
-    //alert(loggedinUser);
+    
     rungame();
 
     
     
     
-});
+

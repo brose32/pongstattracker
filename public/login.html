@@ -73,7 +73,7 @@
           firebase.auth().signInWithEmailAndPassword(userEmail, userPass).then(
               (user) => { 
                 var x = firebase.auth().currentUser;
-               // alert(x.uid);
+                alert(x.uid);
                 window.location.href = "index.html";
                 //console.log(user.uid);
               }

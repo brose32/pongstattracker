@@ -17,13 +17,15 @@
     "express-session": "^1.17.1",
     "firebase": "^8.1.0",
     "firebase-admin": "^9.4.1",
+    "firestore": "^1.1.6",
     "jquery": "^3.5.1",
     "mime": "^2.4.6",
     "pug": "^3.0.0"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
