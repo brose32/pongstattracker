@@ -14,6 +14,10 @@
 <div class = "columns">
         <div class= "column">
             <form>
+                    <label>First Name:</label>
+                    <input id="firstname"></input><br>
+                    <label>Last Name:</label>
+                    <input id="lastname"></input><br>
                     <label>Username:</label>
                     <input id = "newusername"></input> <br>
                     <label>Email:</label>
@@ -40,7 +44,7 @@
      https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 
 <script>
   // Your web app's Firebase configuration
@@ -69,6 +73,8 @@
           let username = document.getElementById("newusername").value;
           let userEmail = document.getElementById("newemail").value;
           let userPass = document.getElementById("newpassword").value;
+          let firstname = document.getElementById("firstname").value;
+          let lastname = document.getElementById("lastname").value;
           let uID;
 
           //stores uid in the 
@@ -77,13 +83,13 @@
             var x = firebase.auth().currentUser;
             uID = x.uid;
           });
-          let z = await axios({
-              method: 'post',
-              url: `http://localhost:3002/api/addIDpair/id=${uID}&user=${username}`
-          });
-          let y = await axios({
-              method: "post",
-              url: `http://localhost:3002/api/addProfile/username=${username}&name=jim`
+          firebase.firestore().collection("profiles").doc(username).set({
+              firstName: firstname,
+              lastName: lastname,
+              gamesPlayed: 0,
+              group: '',
+              totalShots: 0,
+              finalCupsMade: 0
           }).then((response) => {
               window.location.href = "index.html"
           });

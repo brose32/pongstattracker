@@ -30,7 +30,7 @@ async function updateStats(username, cupsMadeGame, finalCupsMadeGame, shots) {
     playerRef.update({
         cupsMade: firebase.firestore.FieldValue.increment(cupsMadeGame),
         finalCupsMade: firebase.firestore.FieldValue.increment(finalCupsMadeGame),
-        shots: firebase.firestore.FieldValue.increment(shots),
+        totalShots: firebase.firestore.FieldValue.increment(shots),
         gamesPlayed: firebase.firestore.FieldValue.increment(1)
     })
   }
